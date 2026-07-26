@@ -1,0 +1,151 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-display: "Fraunces", ui-serif, Georgia, serif;
+  --font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-saffron: var(--saffron);
+  --color-turmeric: var(--turmeric);
+  --color-maroon: var(--maroon);
+  --color-cardamom: var(--cardamom);
+  --color-cream: var(--cream);
+}
+
+:root {
+  --radius: 0.75rem;
+
+  /* Warm Indian-inspired palette */
+  --cream: oklch(0.972 0.02 85);
+  --saffron: oklch(0.72 0.17 55);
+  --turmeric: oklch(0.82 0.16 82);
+  --maroon: oklch(0.38 0.12 25);
+  --cardamom: oklch(0.55 0.08 145);
+
+  --background: oklch(0.972 0.02 85);
+  --foreground: oklch(0.22 0.04 30);
+  --card: oklch(0.985 0.012 85);
+  --card-foreground: oklch(0.22 0.04 30);
+  --popover: oklch(0.985 0.012 85);
+  --popover-foreground: oklch(0.22 0.04 30);
+  --primary: oklch(0.55 0.19 32);
+  --primary-foreground: oklch(0.98 0.01 85);
+  --secondary: oklch(0.92 0.04 75);
+  --secondary-foreground: oklch(0.28 0.06 30);
+  --muted: oklch(0.94 0.02 80);
+  --muted-foreground: oklch(0.45 0.04 40);
+  --accent: oklch(0.82 0.16 82);
+  --accent-foreground: oklch(0.24 0.05 30);
+  --destructive: oklch(0.55 0.22 27);
+  --destructive-foreground: oklch(0.98 0.01 85);
+  --border: oklch(0.88 0.03 70);
+  --input: oklch(0.88 0.03 70);
+  --ring: oklch(0.55 0.19 32);
+
+  --brand-color: var(--primary);
+  --brand-color-light: oklch(from var(--primary) l c h / 0.1);
+  --brand-color-hover: oklch(from var(--primary) calc(l - 0.1) c h);}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+  html {
+    font-family: var(--font-body);
+  }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-feature-settings: "ss01", "cv11";
+  }
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+  }
+}
+
+@utility container-x {
+  width: 100%;
+  max-width: 80rem;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+}
+
+@utility btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  background: var(--color-primary);
+  color: var(--color-primary-foreground);
+  padding: 0.875rem 1.75rem;
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: transform 0.2s ease, background 0.2s ease;
+  &:hover {
+    background: color-mix(in oklab, var(--color-primary) 88%, black);
+    transform: translateY(-1px);
+  }
+}
+
+@utility btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  border: 1px solid var(--color-border);
+  color: var(--color-foreground);
+  padding: 0.875rem 1.75rem;
+  font-weight: 500;
+  font-size: 0.95rem;
+  background: transparent;
+  transition: background 0.2s ease;
+  &:hover {
+    background: var(--color-muted);
+  }
+}
+
+@utility eyebrow {
+  font-size: 0.75rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+@utility grain-bg {
+  background-image:
+    radial-gradient(circle at 20% 10%, color-mix(in oklab, var(--saffron) 15%, transparent), transparent 45%),
+    radial-gradient(circle at 90% 80%, color-mix(in oklab, var(--turmeric) 18%, transparent), transparent 50%);
+}
